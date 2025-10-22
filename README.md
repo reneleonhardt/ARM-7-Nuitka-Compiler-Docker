@@ -34,6 +34,16 @@ cd ARM-7-Nuitka-Compiler-Docker
 docker-compose build
 ```
 
+When building for Raspberry Pi 3 or newer (64-bit, 2016), change
+```yaml
+platform: linux/arm/v7
+```
+to
+```yaml
+platform: linux/arm64
+```
+in `docker-compose.yml` first.
+
 ### 3. Run the container
 
 ```bash
@@ -80,15 +90,12 @@ python3 -m nuitka --standalone --include-data-dir=./data=data/ your_script.py
 
 To include additional Python packages, you can either:
 
-1. Install them manually inside the container:
+1. Install them manually inside the container's /home/appuser/.venv:
    ```bash
    pip3 install package-name
    ```
 
-2. Create a `requirements.txt` file and uncomment the related line in the Dockerfile:
-   ```
-   RUN pip install --no-cache-dir --user -r requirements.txt
-   ```
+2. Or create a `requirements.txt` file which the build will install automatically.
 
 ### Adjusting Compiler Options
 

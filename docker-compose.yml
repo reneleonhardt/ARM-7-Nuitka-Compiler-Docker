@@ -1,6 +1,6 @@
 services:
   arm-builder:
-    platform: linux/arm/v7
+    platform: linux/arm/v7  # change to "linux/arm64" when building for Raspberry Pi 3 and newer (64-bit, 2016)
     build:
       context: .
       dockerfile: Dockerfile

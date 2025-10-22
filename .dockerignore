@@ -1,0 +1,7 @@
+Dockerfile
+docker-compose.yml
+README.md
+
+# COPY conditionally with glob, but allowing only "requirements.txt" without suffix
+requirements.txt*
+!requirements.txt
